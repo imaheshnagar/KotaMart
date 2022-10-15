@@ -327,32 +327,23 @@
 
 <div class="d-flex">
   <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
-    <li ngbNavItem="admin">
-      <a routerLink="admin" routerLinkActive="" >Admin</a>
+  <li ngbNavItem="signin">
+    <a routerLink="signin" routerLinkActive="active-link" >Sign-In</a>
+  </li>
+  <li ngbNavItem="signout">
+    <a routerLink="signout" routerLinkActive="active-link" >Sign-Out</a>
+  </li>
+  <li ngbNavItem="admin">
+      <a routerLink="admin" routerLinkActive="active-link" >Admin</a>
        </li>
     <li ngbNavItem="buyer">
-      <a routerLink="buyer" routerLinkActive="" >Buyer</a>
-      <ng-template ngbNavContent>
-      
-      </ng-template>
+      <a routerLink="buyer" routerLinkActive="active-link" >Buyer</a>
     </li>
     <li ngbNavItem="seller">
-      <a routerLink="seller" routerLinkActive="" >Seller</a>
+      <a routerLink="seller" routerLinkActive="active-link" >Seller</a>
     </li>
-    <li ngbNavItem="signin">
-      <a routerLink="signIn" routerLinkActive="" >Sign-In</a>
-    </li>
-    <li ngbNavItem="signout">
-      <a routerLink="signOut" routerLinkActive="" >Sign-Out</a>
-    </li>
+   
   </ul>
-
   <div [ngbNavOutlet]="nav" class="ms-4"></div>
 </div>
-
-
-
-
-
-
 <router-outlet></router-outlet>
