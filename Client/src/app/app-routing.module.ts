@@ -7,7 +7,7 @@ import { SignupComponent } from './kmcommon/signup/signup.component';
 
 const routes: Routes = [
   {path:'',component:AppComponent},
-  {path:'signIn',component:SigninComponent},
+  {path:'signin',component:SigninComponent},
   {path:'signup',component:SignupComponent},
   {path:'signOut',component:AppComponent},
   {path:'buyer',loadChildren:()=>import('./buyer/buyer.module').then(m=>m.BuyerModule)},
