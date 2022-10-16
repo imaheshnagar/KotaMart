@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SellerComponent } from './seller/seller.component';
+import { KmcommonModule } from '../kmcommon/kmcommon.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { SellerComponent } from './seller/seller.component';
   ],
   imports: [
     CommonModule,
+    KmcommonModule,
     AdminRoutingModule
   ]
 })
