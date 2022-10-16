@@ -1,23 +1,25 @@
 <form  [formGroup]="fg" (ngSubmit)="login()">
-    <div class="imgcontainer">
+    <!-- <div class="imgcontainer">
       <img src="../../../favicon.ico" alt="Avatar" class="avatar">
-    </div>
+    </div> -->
   
     <div class="container">
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" formControlName="uname"  >
+      <span>{{getError('uname')}}</span><br>
   
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" formControlName="psw" required>
-  
+      <span>{{getError('psw')}}</span>
       <button type="submit">Login</button>
       <label>
         <input type="checkbox" checked="checked" formControlName="remember"> Remember me
       </label>
+     
     </div>
   
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="button" class="cancelbtn" (click)="Cancel()" >Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>

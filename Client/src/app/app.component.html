@@ -1,14 +1,10 @@
-<header id="header">
-  <h1>About</h1>
-  <a routerLink="signup" routerLinkActive="active-link">First Time Here ,sign Up </a><br><br>
-  <a href="#menu">Menu</a> 
-</header>
 
-<!-- Nav -->
+<!-- <mg-home></mg-home> -->
 <nav class="d-flex">
   <ul>
+    <li><a routerLink="/" >Home</a></li>
     <li id="signin">
-      <a routerLink="signIn" routerLinkActive="active-link">Sign-In</a>
+      <a routerLink="signin" routerLinkActive="active-link">Sign-In</a>
     </li>
       <li id="signout">
       <a routerLink="signout" routerLinkActive="active-link">Sign-Out</a>
@@ -24,23 +20,4 @@
     </li>
   </ul>
 </nav>
-
-<section id="banner" data-video="images/banner">
- ...
-</section>
-
-<!-- Main -->
-<div id="main">
-
-  <!-- One -->
-  <section class="wrapper style1">
-    ...
-  </section>
-
-</div>
-
-<!-- Footer -->
-<footer id="footer">
-  ...
-</footer>
 <router-outlet></router-outlet>
