@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { kmFormControl } from '../helpers/kmformcontrol';
 
@@ -30,7 +30,7 @@ export class SigninComponent implements OnInit {
 
 
 
-  getError(cntrl:string):string
+  getControlError(cntrl:string):string
   {
     const fgcontrol = this.fg.get(cntrl);
 
