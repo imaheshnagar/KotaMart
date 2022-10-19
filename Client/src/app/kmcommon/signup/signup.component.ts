@@ -15,10 +15,20 @@ export class SignupComponent implements OnInit {
 
   fg = new FormGroup(
     { 
+      fname:new FormControl('',[Validators.required]),
+      lname:new FormControl('',[Validators.required]),
+      address:new FormGroup(
+        {
+           line1:new FormControl('',[Validators.required]),
+           line2:new FormControl('',[Validators.required]),
+           city:new FormControl('',[Validators.required]),
+        }
+      ),
+      mobile:new FormControl('',[Validators.required]),
       email:new FormControl('',[Validators.required,Validators.email]),
       psw:new FormControl('',[Validators.required]),
       cnfpsw:new FormControl('',[Validators.required]),
-      remember:new FormControl(false)
+      acceptTerms:new FormControl(false)
     }
   )
 
