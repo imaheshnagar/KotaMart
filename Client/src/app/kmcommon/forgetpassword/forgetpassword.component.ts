@@ -12,7 +12,7 @@ export class ForgetpasswordComponent implements OnInit {
 
    fg = new FormGroup(
     {
-      email: new FormControl('',[Validators.required]) 
+      email: new FormControl('',[Validators.required,Validators.email]) 
     }
   );
   ngOnInit(): void {
@@ -22,5 +22,29 @@ export class ForgetpasswordComponent implements OnInit {
   {
     console.log(this.fg);
   }
+
+  kmErrorMessage(cntrl:string,fg:FormGroup):string
+  {
+      const fgcontrol = fg.get(cntrl);
+
+          if(fgcontrol && fgcontrol.errors !=null && fgcontrol.touched && fgcontrol.invalid )
+          {
+              if(fgcontrol.errors['required'])
+              {
+                  return "This field is required";;
+              }
+              if(fgcontrol.errors['email'])
+              {
+                  return "This email format is incorrect";;
+              }
+              if(fgcontrol.errors['pattern'])
+              {
+                  return "This field is required pattern";;
+              }
+          }    
+          return ""
+
+  }
+
 
 }
