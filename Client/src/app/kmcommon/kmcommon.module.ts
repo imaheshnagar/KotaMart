@@ -6,6 +6,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {  NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from '../home/home.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { HomeComponent } from '../home/home.component';
     SigninComponent,
     Notfound404Component,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    ForgetpasswordComponent
   ],
   imports: [
     CommonModule,

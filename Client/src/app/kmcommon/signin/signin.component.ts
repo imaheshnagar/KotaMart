@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { kmFormControl } from '../helpers/kmformcontrol';
+
 
 @Component({
   selector: 'mg-signin',
@@ -10,9 +10,10 @@ import { kmFormControl } from '../helpers/kmformcontrol';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private router:Router) { }
+ constructor(private router:Router) { }
 
   ngOnInit(): void {
+
   }
 
   fg = new FormGroup(
@@ -28,28 +29,6 @@ export class SigninComponent implements OnInit {
     }
   )
 
-
-
-  getError(cntrl:string):string
-  {
-    const fgcontrol = this.fg.get(cntrl);
-
-    if(fgcontrol && fgcontrol.errors !=null && fgcontrol.touched && fgcontrol.invalid )
-    {
-      if(fgcontrol.errors['required'])
-      {
-          return "This field is required";;
-      }
-      if(fgcontrol.errors['pattern'])
-      {
-          return "This field is required pattern";;
-      }
-    }    
-
-    return ""
-
-  }
-
   login()
   {
     console.log(this.fg);
@@ -58,6 +37,34 @@ export class SigninComponent implements OnInit {
   {
    this.router.navigateByUrl('/home');
   }
+  
+  ForgetPassword()
+  {
+   this.router.navigateByUrl('/forgetpassword');
+  }
+   
+
+  kmErrorMessage(cntrl:string,fg:FormGroup):string
+  {
+      const fgcontrol = fg.get(cntrl);
+
+          if(fgcontrol && fgcontrol.errors !=null && fgcontrol.touched && fgcontrol.invalid )
+          {
+              if(fgcontrol.errors['required'])
+              {
+                  return "This field is required";;
+              }
+              if(fgcontrol.errors['pattern'])
+              {
+                  return "This field is required pattern";;
+              }
+          }    
+          return ""
+
+  }
 
 
 }
+
+
+
