@@ -6,7 +6,7 @@
 
       <label for="fname"><b>First Name</b></label>
       <input type="text" placeholder="Enter First Name" formControlName="fname" >
-      <span>{{kmErrorMessage('fname',fg)}}</span>
+      <span [ngClass]="'validation-error'">{{kmErrorMessage('fname',fg)}}</span>
   
       <label for="lname"><b>Last Name</b></label>
       <input type="text" placeholder="Enter Last Name" formControlName="lname" >

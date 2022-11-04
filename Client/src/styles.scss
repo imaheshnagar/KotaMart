@@ -2,3 +2,13 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+
+  .validation-error{
+    color:red;
+  }
+
+  .validation_text_error{
+    border:3px double #F7730E;
+  }
+
