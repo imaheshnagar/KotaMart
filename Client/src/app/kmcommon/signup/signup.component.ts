@@ -51,21 +51,22 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  PasswordMatch():ValidatorFn
+  PasswordMatch(fg:any):ValidatorFn|{[key:string]:any}|null
   {
-      return():ValidationErrors|null=>
-      {
-        const psw = this.fg.get('psw');
-        const cnfpsw= this.fg.get('cnfpsw');
+    if(fg)
+    {
+        const psw = fg.get('psw');
+        const cnfpsw= fg.get('cnfpsw');
         if(psw?.value && cnfpsw?.value && psw.value == cnfpsw.value)
         {
           return null ;
         }
         else
         {
-          return {passwordNotMatch:{value:true}};
+          return {'passwordNotMatch':true};
         }
-      };
+      }
+      return null;
   }
 
   kmErrorMessage(cntrl:string,fg:FormGroup):string
