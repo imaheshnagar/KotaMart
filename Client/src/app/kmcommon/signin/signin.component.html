@@ -8,13 +8,13 @@
       <input  type="text" 
       [ngClass]="{'validation_text_error':fg.controls['uname'].invalid && fg.controls['uname'].touched}" 
       placeholder="Enter Username" formControlName="uname"  >
-      <span [ngClass]="'validation-error'"> {{kmErrorMessage('uname',fg)}}</span><br>
+      <span [ngClass]="'validation-error'"> {{errhelper.kmErrorMessage('uname',fg)}}</span><br>
   
       <label for="psw"><b>Password</b></label>
       <input type="password"  
       [ngClass]="{'validation_text_error':fg.controls['psw'].invalid && fg.controls['psw'].touched}" 
       placeholder="Enter Password" formControlName="psw" required>
-      <span [ngClass]="'validation-error'">{{kmErrorMessage('psw',fg)}}</span>
+      <span [ngClass]="'validation-error'">{{errhelper.kmErrorMessage('psw',fg)}}</span>
       <button type="submit" [disabled]="fg.invalid">Login</button>
       <label>
         <input type="checkbox" checked="checked" formControlName="remember"> Remember me

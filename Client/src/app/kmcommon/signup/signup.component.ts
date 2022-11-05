@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { ErrorMessages } from '../Validations/ErrorMessages';
 
 @Component({
   selector: 'mg-signup',
@@ -8,7 +9,7 @@ import { EmailValidator, FormControl, FormGroup, ValidationErrors, ValidatorFn, 
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(public errhelper:ErrorMessages) { }
 
   ngOnInit(): void {
   }
@@ -69,23 +70,6 @@ export class SignupComponent implements OnInit {
       return null;
   }
 
-  kmErrorMessage(cntrl:string,fg:FormGroup):string
-  {
-      const fgcontrol = fg.get(cntrl);
 
-          if(fgcontrol && fgcontrol.errors !=null && fgcontrol.touched && fgcontrol.invalid )
-          {
-              if(fgcontrol.errors['required'])
-              {
-                  return "This field is required";;
-              }
-              if(fgcontrol.errors['pattern'])
-              {
-                  return "This field is required pattern";;
-              }
-          }    
-          return ""
-
-  }
 
 }

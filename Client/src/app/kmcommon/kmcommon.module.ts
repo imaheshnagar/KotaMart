@@ -7,6 +7,7 @@ import {  NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from '../home/home.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { ErrorMessages } from './Validations/ErrorMessages';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
     NgbModule,
     
   ],
+  providers:[ErrorMessages],
   exports:[
     FormsModule,
     ReactiveFormsModule,
