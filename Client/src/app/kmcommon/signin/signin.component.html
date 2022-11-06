@@ -5,17 +5,13 @@
   
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input  type="text" 
-      [ngClass]="{'validation_text_error':fg.controls['uname'].invalid && fg.controls['uname'].touched}" 
-      placeholder="Enter Username" formControlName="uname"  >
-      <span [ngClass]="'validation-error'"> {{errhelper.kmErrorMessage('uname',fg)}}</span><br>
+      <input type="text" placeholder="Enter Username" formControlName="uname"  >
+      <span>{{getControlError('uname')}}</span><br>
   
       <label for="psw"><b>Password</b></label>
-      <input type="password"  
-      [ngClass]="{'validation_text_error':fg.controls['psw'].invalid && fg.controls['psw'].touched}" 
-      placeholder="Enter Password" formControlName="psw" required>
-      <span [ngClass]="'validation-error'">{{errhelper.kmErrorMessage('psw',fg)}}</span>
-      <button type="submit" [disabled]="fg.invalid">Login</button>
+      <input type="password" placeholder="Enter Password" formControlName="psw" required>
+      <span>{{getControlError('psw')}}</span>
+      <button type="submit">Login</button>
       <label>
         <input type="checkbox" checked="checked" formControlName="remember"> Remember me
       </label>
@@ -24,6 +20,6 @@
   
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" class="cancelbtn" (click)="Cancel()" >Cancel</button>
-      <span class="psw">Forgot <a href="forgetpassword" (click)="ForgetPassword()">password?</a></span>
+      <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
