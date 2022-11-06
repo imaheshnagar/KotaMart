@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { kmFormControl } from '../helpers/kmformcontrol';
+import { ErrorMessages } from '../Validations/ErrorMessages';
+
 
 @Component({
   selector: 'mg-signin',
@@ -10,54 +11,41 @@ import { kmFormControl } from '../helpers/kmformcontrol';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router, public errhelper: ErrorMessages) { }
 
   ngOnInit(): void {
+
   }
 
   fg = new FormGroup(
-    { 
-      uname:new FormControl('',[Validators.required]),
-      psw:new FormControl('',
-      [
-        Validators.required,
-        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
-       ]
+    {
+      uname: new FormControl('', [Validators.required]),
+      psw: new FormControl('',
+        [
+          Validators.required,
+          Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
+        ]
       ),
-      remember:new FormControl()
+      remember: new FormControl()
     }
   )
 
-
-
-  getControlError(cntrl:string):string
-  {
-    const fgcontrol = this.fg.get(cntrl);
-
-    if(fgcontrol && fgcontrol.errors !=null && fgcontrol.touched && fgcontrol.invalid )
-    {
-      if(fgcontrol.errors['required'])
-      {
-          return "This field is required";;
-      }
-      if(fgcontrol.errors['pattern'])
-      {
-          return "This field is required pattern";;
-      }
-    }    
-
-    return ""
-
-  }
-
-  login()
-  {
+  login() {
     console.log(this.fg);
   }
-  Cancel()
-  {
-   this.router.navigateByUrl('/home');
+  Cancel() {
+    this.router.navigateByUrl('/home');
   }
+
+  ForgetPassword() {
+    this.router.navigateByUrl('/forgetpassword');
+  }
+
+
+
 
 
 }
+
+
+
