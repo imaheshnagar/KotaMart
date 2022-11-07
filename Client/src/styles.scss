@@ -12,3 +12,53 @@
     border:3px double #F7730E;
   }
 
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+footer {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+footer {
+  height: 50px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: lightblue;
+  z-index: 150;
+}
+
+#footer_push {
+  clear: both;
+  height: 50px;
+}
+
+#side {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #0A0;
+  z-index: 100;
+}
+
+#header {
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #A00;
+  z-index: 200;
+}
+
+#header_push {
+  clear: both;
+  height: 40px;
+}
+

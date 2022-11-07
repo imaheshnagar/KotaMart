@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {KmcommonModule } from '../app/kmcommon/kmcommon.module';
 
 @Component({
   selector: 'app-root',

@@ -17,6 +17,7 @@ import { ErrorMessages } from './Validations/ErrorMessages';
     SignupComponent,
     HomeComponent,
     ForgetpasswordComponent
+    
   ],
   imports: [
     CommonModule,
@@ -24,12 +25,14 @@ import { ErrorMessages } from './Validations/ErrorMessages';
     ReactiveFormsModule,
     NgbModule,
     
+    
   ],
   providers:[ErrorMessages],
   exports:[
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    
     
 
   ]
