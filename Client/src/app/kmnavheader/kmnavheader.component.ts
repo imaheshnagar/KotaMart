@@ -15,4 +15,8 @@ export class KmnavheaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout()
+  {
+    
+  }
 }
