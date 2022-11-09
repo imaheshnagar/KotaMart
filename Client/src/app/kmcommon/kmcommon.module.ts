@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from '../home/home.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { ErrorMessages } from './Validations/ErrorMessages';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ErrorMessages } from './Validations/ErrorMessages';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    HttpClientModule
     
     
   ],

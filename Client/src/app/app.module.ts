@@ -4,7 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KmcommonModule } from './kmcommon/kmcommon.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { KmnavheaderComponent } from './kmnavheader/kmnavheader.component';
+import { KmnavheaderComponent } from './kmcommon/kmnavheader/kmnavheader.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { KmnavheaderComponent } from './kmnavheader/kmnavheader.component';
     BrowserModule,
     AppRoutingModule,
     KmcommonModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
