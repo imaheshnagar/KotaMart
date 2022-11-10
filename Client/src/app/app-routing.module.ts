@@ -6,6 +6,9 @@ import { ForgetpasswordComponent } from './kmcommon/forgetpassword/forgetpasswor
 import { Notfound404Component } from './kmcommon/notfound404/notfound404.component';
 import { SigninComponent } from './kmcommon/signin/signin.component';
 import { SignupComponent } from './kmcommon/signup/signup.component';
+import { AdminGuard } from './kmcommon/_guards/admin.guard';
+import { BuyerGuard } from './kmcommon/_guards/buyer.guard';
+import { SellerGuard } from './kmcommon/_guards/seller.guard';
 
 const routes: Routes = [
   // {path:'',redirectTo:"/home"},
@@ -14,9 +17,9 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'signout',component:HomeComponent},
   {path:'forgetpassword',component:ForgetpasswordComponent},
-  {path:'buyer',loadChildren:()=>import('./buyer/buyer.module').then(m=>m.BuyerModule)},
-  {path:'seller',loadChildren:()=>import('./seller/seller.module').then(m=>m.SellerModule)},
-  {path:'admin',loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)},
+  {path:'buyer',canActivate:[BuyerGuard], loadChildren:()=>import('./buyer/buyer.module').then(m=>m.BuyerModule)},
+  {path:'seller',canActivate:[SellerGuard],loadChildren:()=>import('./seller/seller.module').then(m=>m.SellerModule)},
+  {path:'admin',canActivate:[AdminGuard],loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)},
   {path:'',redirectTo:"home",pathMatch:'full'},
   {path:'**',component:Notfound404Component}
 ];
