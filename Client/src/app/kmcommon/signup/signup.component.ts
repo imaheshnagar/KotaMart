@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorMessages } from '../Validations/ErrorMessages';
+import { AppUser } from '../_models/appuser';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'mg-signup',
@@ -9,14 +11,12 @@ import { ErrorMessages } from '../Validations/ErrorMessages';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(public errhelper:ErrorMessages) { }
+  constructor(public errhelper:ErrorMessages,private userSer:UserService  ) { }
 
   ngOnInit(): void {
   }
 
-
-
-  fg = new FormGroup(
+  fgSignUp = new FormGroup(
     { 
       fname:new FormControl('',[Validators.required,this.testNotAllowed]),
       lname:new FormControl('',[Validators.required]),
@@ -40,24 +40,36 @@ export class SignupComponent implements OnInit {
 
   signup()
   {
-    console.log(this.fg);
+   
+    const signUpData :AppUser = new AppUser(this.fgSignUp.controls.fname.value ,this.fgSignUp.controls.psw.value,this.fgSignUp.controls.email.value);
+    
+    this.userSer.signup(signUpData).subscribe(
+      {
+        next:(result)=> { console.log(result)},
+        error:(err) => {console.log(err)},
+        complete:()=> {console.log("I am done and can move to sign In ")}
+      }
+    )
+
+
+
   }
 
   testNotAllowed():ValidatorFn
   {
     return ():ValidationErrors|null=>
     {
-      const name = this.fg.get('fname');
+      const name = this.fgSignUp.get('fname');
       return name?.value =="test" ? null :{notAllowed:{value:true}};
     }
   }
 
-  PasswordMatch(fg:any):ValidatorFn|{[key:string]:any}|null
+  PasswordMatch(fgSignUp:any):ValidatorFn|{[key:string]:any}|null
   {
-    if(fg)
+    if(fgSignUp)
     {
-        const psw = fg.get('psw');
-        const cnfpsw= fg.get('cnfpsw');
+        const psw = fgSignUp.get('psw');
+        const cnfpsw= fgSignUp.get('cnfpsw');
         if(psw?.value && cnfpsw?.value && psw.value == cnfpsw.value)
         {
           return null ;

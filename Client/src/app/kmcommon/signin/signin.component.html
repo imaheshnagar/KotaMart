@@ -1,4 +1,4 @@
-<form  [formGroup]="fg" (ngSubmit)="login()">
+<form  [formGroup]="fgSignIn" (ngSubmit)="login()">
     <!-- <div class="imgcontainer">
       <img src="../../../favicon.ico" alt="Avatar" class="avatar">
     </div> -->
@@ -6,16 +6,16 @@
     <div class="container">
       <label for="uname"><b>Username</b></label>
       <input  type="text" 
-      [ngClass]="{'validation_text_error':fg.controls['uname'].invalid && fg.controls['uname'].touched}" 
+      [ngClass]="{'validation_text_error':fgSignIn.controls['uname'].invalid && fgSignIn.controls['uname'].touched}" 
       placeholder="Enter Username" formControlName="uname"  >
-      <span [ngClass]="'validation-error'"> {{errhelper.kmErrorMessage('uname',fg)}}</span><br>
+      <span [ngClass]="'validation-error'"> {{errhelper.kmErrorMessage('uname',fgSignIn)}}</span><br>
   
       <label for="psw"><b>Password</b></label>
       <input type="password"  
-      [ngClass]="{'validation_text_error':fg.controls['psw'].invalid && fg.controls['psw'].touched}" 
+      [ngClass]="{'validation_text_error':fgSignIn.controls['psw'].invalid && fgSignIn.controls['psw'].touched}" 
       placeholder="Enter Password" formControlName="psw" required>
-      <span [ngClass]="'validation-error'">{{errhelper.kmErrorMessage('psw',fg)}}</span>
-      <button type="submit" [disabled]="fg.invalid">Login</button>
+      <span [ngClass]="'validation-error'">{{errhelper.kmErrorMessage('psw',fgSignIn)}}</span>
+      <button type="submit" [disabled]="fgSignIn.invalid">Login</button>
       <label>
         <input type="checkbox" checked="checked" formControlName="remember"> Remember me
       </label>
