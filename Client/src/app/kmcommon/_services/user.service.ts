@@ -37,7 +37,6 @@ export class UserService {
     );
   }
 
-  
   setUserSession(response:any)
   {
     if(response)
@@ -45,8 +44,11 @@ export class UserService {
       sessionStorage.setItem("userdata",JSON.stringify(response));
       sessionStorage.setItem("usertoken",response?.token) ;
     }
-
   }
 
+  getToken()
+  {
+    return sessionStorage.getItem("usertoken");
+  }
 
 }

@@ -34,7 +34,7 @@ export class SigninComponent implements OnInit {
   )
 
   login() {
-    const signInData :AppUser = new AppUser(this.fgSignIn.controls.uname.value ,this.fgSignIn.controls.psw.value,"");
+    const signInData :AppUser = new AppUser(this.fgSignIn.controls.uname.value ,"",this.fgSignIn.controls.psw.value);
    
     this.userSer.signIn(signInData).subscribe({
       next:(res)=>{

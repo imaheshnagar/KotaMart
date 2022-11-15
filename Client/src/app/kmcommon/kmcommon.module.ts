@@ -8,7 +8,8 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from '../home/home.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { ErrorMessages } from './Validations/ErrorMessages';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwttokenInterceptor } from './_interceptors/jwttoken.interceptor';
 
 
 @NgModule({
@@ -29,7 +30,10 @@ import { HttpClientModule } from '@angular/common/http';
     
     
   ],
-  providers:[ErrorMessages],
+  providers:[ErrorMessages,
+    {provide:HTTP_INTERCEPTORS,useClass:JwttokenInterceptor,multi:true },
+    
+  ],
   exports:[
     FormsModule,
     ReactiveFormsModule,

@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { KmcommonModule } from './kmcommon/kmcommon.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { KmnavheaderComponent } from './kmcommon/kmnavheader/kmnavheader.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { JwttokenInterceptor } from './kmcommon/_interceptors/jwttoken.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
 
   ],
-  providers: [],
+  providers: [
+ 
+  ],
   bootstrap: [AppComponent]
 })
 

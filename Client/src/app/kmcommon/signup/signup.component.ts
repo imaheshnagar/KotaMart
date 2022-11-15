@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
   signup()
   {
    
-    const signUpData :AppUser = new AppUser(this.fgSignUp.controls.fname.value ,this.fgSignUp.controls.psw.value,this.fgSignUp.controls.email.value);
+    const signUpData :AppUser = new AppUser(this.fgSignUp.controls.fname.value ,this.fgSignUp.controls.email.value,this.fgSignUp.controls.psw.value);
     
     this.userSer.signup(signUpData).subscribe(
       {
