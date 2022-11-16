@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ErrorMessages } from '../Validations/ErrorMessages';
 import { AppUser } from '../_models/appuser';
 import { UserService } from '../_services/user.service';
@@ -11,7 +12,9 @@ import { UserService } from '../_services/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(public errhelper:ErrorMessages,private userSer:UserService  ) { }
+
+  constructor(public errhelper:ErrorMessages,private userSer:UserService,
+    private router:Router  ) { }
 
   ngOnInit(): void {
   }
@@ -40,20 +43,23 @@ export class SignupComponent implements OnInit {
 
   signup()
   {
-   
     const signUpData :AppUser = new AppUser(this.fgSignUp.controls.fname.value ,this.fgSignUp.controls.email.value,this.fgSignUp.controls.psw.value);
-    
+    let signupsucess =false;
     this.userSer.signup(signUpData).subscribe(
       {
-        next:(result)=> { console.log(result)},
+        next:(result)=> {
+           console.log(result)
+            signupsucess = true;
+          },
         error:(err) => {console.log(err)},
         complete:()=> {console.log("I am done and can move to sign In ")}
       }
     )
 
-
-
-  }
+    if(signupsucess){
+      this.router.navigateByUrl('/signin')
+    }
+}
 
   testNotAllowed():ValidatorFn
   {

@@ -13,3 +13,12 @@ exports.adminBoard = (req, res) => {
 exports.moderatorBoard = (req, res) => {
   res.status(200).send("Moderator Content.");
 };
+
+exports.buyerBoard = (req, res) => {
+  res.status(200).send("Buyer Content.");
+};
+
+
+exports.sellerBoard = (req, res) => {
+  res.status(200).send("seller Content.");
+};

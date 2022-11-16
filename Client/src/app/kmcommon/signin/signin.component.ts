@@ -39,6 +39,9 @@ export class SigninComponent implements OnInit {
     this.userSer.signIn(signInData).subscribe({
       next:(res)=>{
         console.debug("loggedIn");
+        this.userSer.emitIsLoggedIn(true);
+        this.userSer.emitUserRole("admin");
+        this.router.navigateByUrl("/admin"); 
 
       },
       error:(err)=>{

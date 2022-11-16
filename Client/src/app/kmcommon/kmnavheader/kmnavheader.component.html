@@ -4,27 +4,34 @@
       <li class="nav-item" id="home">
         <a class="nav-link" routerLink="/" >Home</a>
       </li>
-      <li class="nav-item" id="signin">
+      <li *ngIf="!isLoggedIn" class="nav-item" id="signin">
         <a class="nav-link" routerLink="signin">Sign-In</a>
       </li>
-      <li class="nav-item" id="signup">
+      <li *ngIf="!isLoggedIn" class="nav-item" id="signup">
         <a class="nav-link" routerLink="signup" routerLinkActive="active-link">signup</a>
       </li>
-        <li class="nav-item" id="signout">
+       <li *ngIf="isLoggedIn" class="nav-item" id="signout">
         <a class="nav-link" routerLink="signout" routerLinkActive="active-link">Sign-Out</a>
       </li>
-      <li class="nav-item" id="admin">
-        <a class="nav-link" routerLink="admin" routerLinkActive="active-link">Admin</a>
-      </li>
-      <li class="nav-item" id="adminseller">
-        <a class="nav-link" routerLink="admin/seller" routerLinkActive="active-link">Seller</a>
-      </li>
-      <li id="buyer">
-        <a class="nav-link" routerLink="buyer" routerLinkActive="active-link">Buyer</a>
-      </li>
-      <li id="seller">
-        <a class="nav-link" routerLink="seller" routerLinkActive="active-link">Seller</a>
-      </li>
+      <ng-container *ngIf="isLoggedIn && userRole=='admin'">
+            <li  class="nav-item" id="admin">
+              <a class="nav-link" routerLink="admin" routerLinkActive="active-link">Admin</a>
+            </li>
+            <li *ngIf="isLoggedIn && userRole=='admin'" class="nav-item" id="adminseller">
+              <a class="nav-link" routerLink="admin/seller" routerLinkActive="active-link">Seller</a>
+            </li>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn && userRole=='buyer'">
+        <li id="buyer">
+          <a class="nav-link" routerLink="buyer" routerLinkActive="active-link">Buyer</a>
+        </li>
+      </ng-container>
+     
+      <ng-container *ngIf="isLoggedIn && userRole=='seller'">
+        <li id="seller">
+          <a class="nav-link" routerLink="seller" routerLinkActive="active-link">Seller</a>
+        </li>
+      </ng-container>
     </ul>
     <div class="dropdown" dropdown>
       <span class="mr-1">

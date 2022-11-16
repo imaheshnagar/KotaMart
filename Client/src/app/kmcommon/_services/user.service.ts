@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { AppUser } from '../_models/appuser';
@@ -12,21 +13,34 @@ export class UserService {
   user:AppUser = { username:"",password:"",email:"" } ;
   constructor(private httpreq:HttpClient) { }
 
+  userRole = new Subject<string>();
+  isLoogedIn= new Subject<boolean>();
+
   getUser()
   {
-    this.httpreq.get(environment.appServerUrl + 'User').pipe().subscribe( 
+    let userData = sessionStorage.getItem("userdata");
+    if(userData)
     {
-      next:(response)=> {console.table(response)},
-      error:(error)=> {console.debug(error)},
-      complete:()=>{console.debug("done ")}
-    } );
+      console.table(JSON.parse(userData));
+      console.log('token', this.getToken());
+    }
   }
 
   signup(appUser:AppUser)
   {
-    return this.httpreq.post(environment.appServerUrl + 'api/auth/signup',appUser)
+    return this.httpreq.post(environment.appServerUrl + 'api/auth/signup',appUser);
   }
-  
+
+  emitIsLoggedIn(islogged:boolean)
+  {
+    this.isLoogedIn.next(islogged);
+  }
+
+  emitUserRole(role:string)
+  {
+    this.userRole.next(role);
+  }
+
   signIn(appUser:AppUser)
   {
     return this.httpreq.post(environment.appServerUrl + 'api/auth/signin',appUser).pipe(
