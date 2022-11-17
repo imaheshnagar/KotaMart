@@ -45,6 +45,7 @@ export class SignupComponent implements OnInit {
   {
     const signUpData :AppUser = new AppUser(this.fgSignUp.controls.fname.value ,this.fgSignUp.controls.email.value,this.fgSignUp.controls.psw.value);
     let signupsucess =false;
+    debugger;
     this.userSer.signup(signUpData).subscribe(
       {
         next:(result)=> {
@@ -52,13 +53,16 @@ export class SignupComponent implements OnInit {
             signupsucess = true;
           },
         error:(err) => {console.log(err)},
-        complete:()=> {console.log("I am done and can move to sign In ")}
+        complete:()=> {
+          console.log("I am done and can move to sign In ")
+          if(signupsucess){
+            this.router.navigateByUrl('/signin');
+          }
+        }
       }
     )
-
-    if(signupsucess){
-      this.router.navigateByUrl('/signin')
-    }
+  
+  
 }
 
   testNotAllowed():ValidatorFn

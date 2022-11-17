@@ -15,7 +15,6 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'signin',component:SigninComponent},
   {path:'signup',component:SignupComponent},
-  {path:'signout',component:HomeComponent},
   {path:'forgetpassword',component:ForgetpasswordComponent},
   {path:'buyer',canActivate:[BuyerGuard], loadChildren:()=>import('./buyer/buyer.module').then(m=>m.BuyerModule)},
   {path:'seller',canActivate:[SellerGuard],loadChildren:()=>import('./seller/seller.module').then(m=>m.SellerModule)},

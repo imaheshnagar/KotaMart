@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 
 @Component({
@@ -7,27 +8,29 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./kmnavheader.component.scss']
 })
 export class KmnavheaderComponent implements OnInit {
-
-  
-
   active = 'top';
   isLoggedIn :boolean = false;
   userRole:string = "";
   ngOnInit(): void {
   }
 
-  constructor(private userSer:UserService) {
-    userSer.isLoogedIn.subscribe((loggedin)=>{
+  constructor(private userSer:UserService,private router:Router) {
+    userSer.$isLoogedIn.subscribe((loggedin)=>{
       this.isLoggedIn = loggedin;
     });
 
-    userSer.userRole.subscribe((role)=>{
+    userSer.$userRole.subscribe((role)=>{
       this.userRole = role;
     })
   }
 
   logout()
   {
+    debugger;
+    sessionStorage.clear();
+    this.userSer.emitIsLoggedIn(false);
+    this.userSer.emitUserRole('');
+    this.router.navigateByUrl('/signin');
     
   }
 }

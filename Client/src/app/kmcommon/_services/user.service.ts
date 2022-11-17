@@ -13,8 +13,8 @@ export class UserService {
   user:AppUser = { username:"",password:"",email:"" } ;
   constructor(private httpreq:HttpClient) { }
 
-  userRole = new Subject<string>();
-  isLoogedIn= new Subject<boolean>();
+  $userRole :Subject<string> = new Subject<string>();
+  $isLoogedIn :Subject<boolean>= new Subject<boolean>();
 
   getUser()
   {
@@ -33,12 +33,12 @@ export class UserService {
 
   emitIsLoggedIn(islogged:boolean)
   {
-    this.isLoogedIn.next(islogged);
+    this.$isLoogedIn.next(islogged);
   }
 
   emitUserRole(role:string)
   {
-    this.userRole.next(role);
+    this.$userRole.next(role);
   }
 
   signIn(appUser:AppUser)

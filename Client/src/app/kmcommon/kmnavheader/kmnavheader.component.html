@@ -11,7 +11,7 @@
         <a class="nav-link" routerLink="signup" routerLinkActive="active-link">signup</a>
       </li>
        <li *ngIf="isLoggedIn" class="nav-item" id="signout">
-        <a class="nav-link" routerLink="signout" routerLinkActive="active-link">Sign-Out</a>
+        <a class="nav-link" (click)="logout()">Sign-Out</a>
       </li>
       <ng-container *ngIf="isLoggedIn && userRole=='admin'">
             <li  class="nav-item" id="admin">
@@ -47,8 +47,7 @@
       >
       <div class="dropdown-item"></div>
       <a class="dropdown-item" (click)="logout()"
-        ><i class="fa fa-sign-out"></i> Logout</a
-      >
+        ><i class="fa fa-sign-out"></i> Logout</a>
     </div>
   </div>
   </div>
