@@ -25,4 +25,17 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+
+  app.get(
+    "/api/users/admin",
+    [authJwt.verifyToken, authJwt.isBuyer],
+    controller.adminBoard
+  );
+
+  app.get(
+    "/api/users/admin",
+    [authJwt.verifyToken, authJwt.isSeller],
+    controller.adminBoard
+  );
+
 };

@@ -56,13 +56,50 @@ export class UserService {
     if(response)
     {
       sessionStorage.setItem("userdata",JSON.stringify(response));
-      sessionStorage.setItem("usertoken",response?.token) ;
+      this.setToken(response?.token) ;
     }
   }
+
+  getRoles():any
+  {
+    const sessionData =  sessionStorage.getItem("userdata") ;
+
+    if(typeof(sessionData) ==="string")
+    {
+      const res = JSON.parse(sessionData);
+      if(res)
+      {
+         res.roles;
+      }
+  }
+    return null ;
+  }
+
+  IsRoleAllowed(roleLabel:string)
+  {
+
+    const roles = this.getRoles();
+    if (roleLabel='admin')
+    {
+      return true ;
+    }
+    if(roles)
+    {
+      //return roles.some((r: { Role: string; }) => r.Role === roleLabel);
+    }
+    return false ;
+
+  }
+   
 
   getToken()
   {
     return sessionStorage.getItem("usertoken");
   }
+
+  setToken(token: any) {
+    sessionStorage.setItem("usertoken", token);
+  }
+
 
 }

@@ -15,13 +15,25 @@ export class KmnavheaderComponent implements OnInit {
   }
 
   constructor(private userSer:UserService,private router:Router) {
-    userSer.$isLoogedIn.subscribe((loggedin)=>{
-      this.isLoggedIn = loggedin;
-    });
 
-    userSer.$userRole.subscribe((role)=>{
-      this.userRole = role;
-    })
+    const token = this.userSer.getToken();
+    if (token != "" && !!token) {
+      this.isLoggedIn = true;
+      this.userRole = 'admin';
+    }
+    else
+    {
+      userSer.$isLoogedIn.subscribe((loggedin)=>{
+        this.isLoggedIn = loggedin;
+      });
+
+      userSer.$userRole.subscribe((role)=>{
+        this.userRole = role;
+      })
+  
+    }
+  
+
   }
 
   logout()

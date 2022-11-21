@@ -51,6 +51,72 @@ isAdmin = (req, res, next) => {
   });
 };
 
+
+
+isBuyer = (req, res, next) => {
+  User.findById(req.userId).exec((err, user) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    Role.find(
+      {
+        _id: { $in: user.roles }
+      },
+      (err, roles) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        for (let i = 0; i < roles.length; i++) {
+          if (roles[i].name === "buyer") {
+            next();
+            return;
+          }
+        }
+
+        res.status(403).send({ message: "Require Buyer Role!" });
+        return;
+      }
+    );
+  });
+};
+
+
+isSeller = (req, res, next) => {
+  User.findById(req.userId).exec((err, user) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    Role.find(
+      {
+        _id: { $in: user.roles }
+      },
+      (err, roles) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        for (let i = 0; i < roles.length; i++) {
+          if (roles[i].name === "seller") {
+            next();
+            return;
+          }
+        }
+
+        res.status(403).send({ message: "Require Seller Role!" });
+        return;
+      }
+    );
+  });
+};
+
+
 isModerator = (req, res, next) => {
   User.findById(req.userId).exec((err, user) => {
     if (err) {
@@ -85,6 +151,8 @@ isModerator = (req, res, next) => {
 const authJwt = {
   verifyToken,
   isAdmin,
-  isModerator
+  isModerator,
+  isBuyer,
+  isSeller
 };
 module.exports = authJwt;

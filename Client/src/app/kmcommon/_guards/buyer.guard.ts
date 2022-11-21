@@ -19,13 +19,7 @@ export class BuyerGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      this.userSer.$userRole.subscribe((role)=>{
-        this.userRole = role;
-      })
-      if(this.userRole=="buyer"){
-        return true;
-     }
-     return false;
+      return this.userSer.IsRoleAllowed('buyer')
   }
   
 }

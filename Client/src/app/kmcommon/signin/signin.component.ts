@@ -40,6 +40,8 @@ export class SigninComponent implements OnInit {
       next:(res)=>{
         console.debug("loggedIn");
         this.userSer.emitIsLoggedIn(true);
+        debugger;
+        const roles = this.userSer.getRoles();
         this.userSer.emitUserRole("admin");
         this.router.navigateByUrl("/admin"); 
 

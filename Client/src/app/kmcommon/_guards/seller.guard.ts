@@ -18,13 +18,9 @@ export class SellerGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      this.userSer.$userRole.subscribe((role)=>{
-        this.userRole = role;
-      })
-      if(this.userRole=="seller"){
-        return true;
-     }
-     return false;
+    
+      return this.userSer.IsRoleAllowed('seller')
+
   }
   
 }
