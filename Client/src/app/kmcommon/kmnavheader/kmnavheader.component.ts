@@ -15,7 +15,8 @@ export class KmnavheaderComponent implements OnInit {
   }
 
   constructor(private userSer:UserService,private router:Router) {
-
+ 
+    debugger;
     const token = this.userSer.getToken();
     if (token != "" && !!token) {
       this.isLoggedIn = true;

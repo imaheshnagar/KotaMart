@@ -69,7 +69,7 @@ export class UserService {
       const res = JSON.parse(sessionData);
       if(res)
       {
-         res.roles;
+        return res.roles;
       }
   }
     return null ;
@@ -77,15 +77,15 @@ export class UserService {
 
   IsRoleAllowed(roleLabel:string)
   {
-
+    debugger;
     const roles = this.getRoles();
-    if (roleLabel='admin')
+    if (roleLabel=='admin')
     {
       return true ;
     }
     if(roles)
     {
-      //return roles.some((r: { Role: string; }) => r.Role === roleLabel);
+      return roles.some((r: { Role: string; }) => r.Role === roleLabel);
     }
     return false ;
 

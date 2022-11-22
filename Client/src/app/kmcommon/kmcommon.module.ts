@@ -10,6 +10,7 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { ErrorMessages } from './Validations/ErrorMessages';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwttokenInterceptor } from './_interceptors/jwttoken.interceptor';
+import { NotauthorizedComponent } from './notauthorized/notauthorized.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { JwttokenInterceptor } from './_interceptors/jwttoken.interceptor';
     Notfound404Component,
     SignupComponent,
     HomeComponent,
-    ForgetpasswordComponent
+    ForgetpasswordComponent,
+    NotauthorizedComponent
     
   ],
   imports: [

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from '../_services/user.service';
 
@@ -10,7 +10,7 @@ export class SellerGuard implements CanActivate {
 
   isLoggedIn :boolean = false;
   userRole:string = "";
-  constructor(private userSer :UserService) {
+  constructor(private userSer :UserService,private router:Router) {
  
    
   }
@@ -18,8 +18,13 @@ export class SellerGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-      return this.userSer.IsRoleAllowed('seller')
+     
+      debugger;
+      if(!this.userSer.IsRoleAllowed('seller'))
+      {
+        return this.router.createUrlTree(['./notauthorized']);
+      }
+        return true 
 
   }
   

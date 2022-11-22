@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ForgetpasswordComponent } from './kmcommon/forgetpassword/forgetpassword.component';
+import { NotauthorizedComponent } from './kmcommon/notauthorized/notauthorized.component';
 import { Notfound404Component } from './kmcommon/notfound404/notfound404.component';
 import { SigninComponent } from './kmcommon/signin/signin.component';
 import { SignupComponent } from './kmcommon/signup/signup.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'signin',component:SigninComponent},
   {path:'signup',component:SignupComponent},
   {path:'forgetpassword',component:ForgetpasswordComponent},
+  {path:'notauthorized',component:NotauthorizedComponent},
   {path:'buyer',canActivate:[BuyerGuard], loadChildren:()=>import('./buyer/buyer.module').then(m=>m.BuyerModule)},
   {path:'seller',canActivate:[SellerGuard],loadChildren:()=>import('./seller/seller.module').then(m=>m.SellerModule)},
   {path:'admin',canActivate:[AdminGuard],loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)},
